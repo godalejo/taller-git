@@ -1,4 +1,5 @@
 const numeroSecreto = Math.floor(Math.random() * 100) + 1;
+let intentoAnterior = null;
 let adivinaste = false;
 
 alert("Adivina el numero del 1 al 100");
@@ -16,12 +17,14 @@ while (!adivinaste) {
     alert("Lo lograste");
     adivinaste = true;
   } else {
-    // Logica de frio o caliente
     const diferencia = Math.abs(numeroSecreto - intento);
-    if (diferencia > 20) {
-      alert("Frio");
+    
+    if (intentoAnterior === null) {
+      alert(diferencia > 20 ? "Frio" : "Caliente");
     } else {
-      alert("Caliente");
+      const difAnterior = Math.abs(numeroSecreto - intentoAnterior);
+      alert(diferencia < difAnterior ? "Mas caliente" : "Mas frio");
     }
+    intentoAnterior = intento;
   }
 }
