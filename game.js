@@ -7,9 +7,8 @@ while (!adivinaste) {
   const entrada = prompt("Cual crees que es?");
   const intento = parseInt(entrada);
 
-  // Validacion simple
   if (isNaN(intento) || intento < 1 || intento > 100) {
-    alert("Eso no es un numero valido");
+    alert("Numero no valido");
     continue;
   }
 
@@ -17,6 +16,12 @@ while (!adivinaste) {
     alert("Lo lograste");
     adivinaste = true;
   } else {
-    alert("Sigue intentando");
+    // Logica de frio o caliente
+    const diferencia = Math.abs(numeroSecreto - intento);
+    if (diferencia > 20) {
+      alert("Frio");
+    } else {
+      alert("Caliente");
+    }
   }
 }
